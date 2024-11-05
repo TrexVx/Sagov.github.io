@@ -4,27 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>Registro/Login</title>
+    <title>Inicio</title>
 </head>
 <body>
-    <div class="container">
-        <div class="form-container" id="login-form">
-            <h1>Iniciar Sesión</h1>
-            <input type="text" id="login-email" placeholder="Correo electrónico" required>
-            <input type="password" id="login-password" placeholder="Contraseña" required>
-            <button onclick="login()">Entrar</button>
-            <div id="login-message"></div>
-            <p>¿No tienes cuenta? <span onclick="toggleForms()">Regístrate</span></p>
-        </div>
-        <div class="form-container" id="register-form" style="display:none;">
-            <h1>Registro</h1>
-            <input type="text" id="register-email" placeholder="Correo electrónico" required>
-            <input type="password" id="register-password" placeholder="Contraseña" required>
-            <button onclick="register()">Crear Cuenta</button>
-            <div id="register-message"></div>
-            <p>¿Ya tienes cuenta? <span onclick="toggleForms()">Inicia Sesión</span></p>
-        </div>
-    </div>
-    <script src="script.js"></script>
+    <header>
+        <h1>Bienvenido a Nuestro Portal</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="sobre.html">Sobre Nosotros</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Esta es la página de inicio</h2>
+        <p>En el Tecnm, la investigación y el aprendizaje van de la mano. Con un enfoque en la innovación y el descubrimiento, invitamos a estudiantes y académicos a explorar nuevas fronteras del conocimiento. Únete a nuestra comunidad y transforma el mundo a través de la ciencia y la creatividad..</p>
+    </main>
+    <footer>
+        <p>Tecnologico Nacional de Mexico</p>
+    </footer>
 </body>
 </html>
