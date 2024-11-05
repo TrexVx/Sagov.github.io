@@ -1,46 +1,44 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f2f5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-image: url("imagenes/Tecnologico_Nacional_de_Mexico.svg.png");
+    background-color: #f4f4f4;
 }
 
-.container {
-    background-color: white;
+header {
+    background: #0400f1;
+    color: #fff;
+    padding: 1em 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
     padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    background: #fff;
 }
 
-.form-container {
-    margin: 10px 0;
-}
-
-input {
+footer {
+    text-align: center;
+    padding: 1em 0;
+    background: #2301ac;
+    color: #ffffff;
+    position: relative;
+    bottom: 0;
     width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #4267B2;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #365899;
-}
-
-#login-message, #register-message {
-    margin-top: 15px;
-    color: red;
 }
