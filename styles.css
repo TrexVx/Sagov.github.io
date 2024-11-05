@@ -1,44 +1,196 @@
-body {
-    font-family: Arial, sans-serif;
+/* Reset y estilos generales */
+* {
     margin: 0;
     padding: 0;
-    background-image: url("imagenes/Tecnologico_Nacional_de_Mexico.svg.png");
-    background-color: #f4f4f4;
+    box-sizing: border-box;
 }
 
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header y navegación */
 header {
-    background: #0400f1;
-    color: #fff;
-    padding: 1em 0;
-    text-align: center;
+    background-color: #f8c200;
+    color: white;
+    padding: 1rem 0;
 }
 
-nav ul {
-    list-style-type: none;
-    padding: 0;
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
-
-nav ul li a {
-    color: #fff;
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
     text-decoration: none;
 }
 
-main {
-    padding: 20px;
-    background: #fff;
+.nav-links {
+    display: flex;
+    list-style: none;
 }
 
-footer {
+.nav-links li {
+    margin-left: 1rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Secciones principales */
+main {
+    padding: 2rem 0;
+}
+
+.hero {
     text-align: center;
-    padding: 1em 0;
-    background: #2301ac;
-    color: #ffffff;
-    position: relative;
-    bottom: 0;
-    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.hero-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.departments {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.card {
+    background-color: #f0f0f0;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.card h2 {
+    margin-bottom: 0.5rem;
+}
+
+.card p {
+    margin-bottom: 1rem;
+}
+
+.news {
+    background-color: #10B981;
+    color: white;
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+.news h2 {
+    margin-bottom: 1rem;
+}
+
+.news ul {
+    list-style: none;
+    margin-bottom: 1rem;
+}
+
+.news li {
+    margin-bottom: 1rem;
+}
+
+/* Botones */
+.button {
+    display: inline-block;
+    background-color: #3B82F6;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #2563EB;
+}
+
+/* Footer */
+footer {
+    background-color: #1F2937;
+    color: white;
+    padding: 2rem 0;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.footer-section h3 {
+    margin-bottom: 1rem;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section a {
+    color: #9CA3AF;
+    text-decoration: none;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+}
+
+.footer-bottom {
+    
+    margin-top: 2rem;
+    text-align: center;
+    padding-top: 1rem;
+    border-top: 1px solid #374151;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-content {
+        flex-direction: column;
+    }
+
+    .nav-links {
+        margin-top: 1rem;
+    }
+
+    .nav-links li {
+        margin-left: 0;
+        margin-right: 1rem;
+    }
 }
