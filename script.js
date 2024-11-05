@@ -1,42 +1,29 @@
-async function login() {
-    const email = document.getElementById('login-email').value;
-    const password = document.getElementById('login-password').value;
+// Función para manejar el menú móvil
+function toggleMobileMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('active');
+}
 
-    const response = await fetch('/api/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
+// Agregar evento de clic al botón de menú móvil
+document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuButton = document.createElement('button');
+    mobileMenuButton.classList.add('mobile-menu-button');
+    mobileMenuButton.innerHTML = '☰';
+    mobileMenuButton.setAttribute('aria-label', 'Abrir menú');
+    
+    const nav = document.querySelector('nav');
+    nav.insertBefore(mobileMenuButton, nav.firstChild);
+
+    mobileMenuButton.addEventListener('click', toggleMobileMenu);
+});
+
+// Función para manejar el desplazamiento suave
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
     });
-
-    const data = await response.json();
-    document.getElementById('login-message').innerText = data.message;
-
-    if (data.success) {
-        window.location.href = '/home'; // Redirigir a la página principal
-    }
-}
-
-async function register() {
-    const email = document.getElementById('register-email').value;
-    const password = document.getElementById('register-password').value;
-
-    const response = await fetch('/api/register', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-    });
-
-    const data = await response.json();
-    document.getElementById('register-message').innerText = data.message;
-}
-
-function toggleForms() {
-    const loginForm = document.getElementById('login-form');
-    const registerForm = document.getElementById('register-form');
-    loginForm.style.display = loginForm.style.display === 'none' ? 'block' : 'none';
-    registerForm.style.display = registerForm.style.display === 'none' ? 'block' : 'none';
-}
+});
