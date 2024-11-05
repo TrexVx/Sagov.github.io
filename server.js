@@ -1,69 +1,29 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const mysql = require('mysql');
-const bcrypt = require('bcrypt');
-const path = require('path');
+// Función para manejar el menú móvil
+function toggleMobileMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('active');
+}
 
-const app = express();
-const PORT = 3000;
+// Agregar evento de clic al botón de menú móvil
+document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuButton = document.createElement('button');
+    mobileMenuButton.classList.add('mobile-menu-button');
+    mobileMenuButton.innerHTML = '☰';
+    mobileMenuButton.setAttribute('aria-label', 'Abrir menú');
+    
+    const nav = document.querySelector('nav');
+    nav.insertBefore(mobileMenuButton, nav.firstChild);
 
-app.use(bodyParser.json());
-app.use(express.static('public')); // Sirve archivos estáticos desde la carpeta 'public'
-
-// Configura la base de datos
-const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'tu_usuario',
-    password: 'tu_contraseña',
-    database: 'tu_base_de_datos'
+    mobileMenuButton.addEventListener('click', toggleMobileMenu);
 });
 
-db.connect((err) => {
-    if (err) throw err;
-    console.log('Conectado a la base de datos');
-});
+// Función para manejar el desplazamiento suave
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
 
-// Endpoint de registro
-app.post('/api/register', async (req, res) => {
-    const { email, password } = req.body;
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    const query = 'INSERT INTO users (email, password) VALUES (?, ?)';
-    db.query(query, [email, hashedPassword], (err) => {
-        if (err) {
-            return res.json({ success: false, message: 'Error al registrar. Puede que el correo ya esté en uso.' });
-        }
-        res.json({ success: true, message: 'Usuario registrado con éxito' });
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
     });
-});
-
-// Endpoint de login
-app.post('/api/login', async (req, res) => {
-    const { email, password } = req.body;
-
-    const query = 'SELECT * FROM users WHERE email = ?';
-    db.query(query, [email], async (err, results) => {
-        if (err) throw err;
-
-        if (results.length > 0) {
-            const user = results[0];
-            const match = await bcrypt.compare(password, user.password);
-            if (match) {
-                res.json({ success: true, message: 'Login exitoso' });
-            } else {
-                res.json({ success: false, message: 'Credenciales incorrectas' });
-            }
-        } else {
-            res.json({ success: false, message: 'Usuario no encontrado' });
-        }
-    });
-});
-
-// Página principal después del login
-app.get('/home', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'home.html'));
-});
-
-app.listen(PORT, () => {
-    console.log(`Servidor escuchando en http://localhost:${PORT}`);
 });
